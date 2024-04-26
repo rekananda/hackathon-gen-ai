@@ -51,9 +51,15 @@ body {
   max-width: 400px;
 }
 
+.chat-legend {
+  border-bottom: solid 1px var(--mantine-color-gray-5);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
 .color-icon {
   height: 15px;
   width: 15px;
+  border-radius: 7.5px;
 }
 
 .mantine-Tabs-tab:where([data-active]) .icon-tab {

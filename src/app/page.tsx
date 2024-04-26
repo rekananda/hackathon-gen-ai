@@ -166,7 +166,7 @@ export default function Home() {
         </Tabs>
         {activeTab === "curhat" && numState >= 4 && <Popover opened={popHistory} onChange={toggle} position="right" offset={{ mainAxis: -42, crossAxis: -60 }} shadow="md">
           <Popover.Target>
-            <Button className="history-button" variant="default"><IconHistory/></Button>
+            <Button className="history-button" variant="default" onClick={toggle}><IconHistory/></Button>
           </Popover.Target>
           <Popover.Dropdown className="history-bar">
             <Stack>

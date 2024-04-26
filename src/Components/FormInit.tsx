@@ -40,28 +40,28 @@ const FormInit = (props: PropsFormInitT) => {
   return (
     <form onSubmit={handleSubmit} className={props.className}>
       <TextInput 
-        className="mb-3"
+        mb={12}
         label="Surname"
         value={data.name}
         onChange={(e) => handleUpdate("name", e.target.value)}
         required={true}
       />
       <TextInput 
-        className="mb-3"
+        mb={12}
         label="Job Position"
         value={data.position}
         onChange={(e) => handleUpdate("position", e.target.value)}
         required={true}
       />
       <TextInput 
-        className="mb-3"
+        mb={12}
         label="Bussines/Company field"
         value={data.company}
         onChange={(e) => handleUpdate("company", e.target.value)}
         required={true}
       />
       <Textarea 
-        className="mb-6"
+        mb={24}
         label="Job Desc"
         value={data.jobDesc}
         onChange={(e) => handleUpdate("jobDesc", e.target.value)}
