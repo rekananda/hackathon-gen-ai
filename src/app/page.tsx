@@ -14,7 +14,7 @@ import { ChatDataT, ChatGrouppedT } from "@/types";
 import { convertToChatGroup, greetings } from "@/utils";
 import { ActionIcon, Box, Button, Divider, Flex, Group, Popover, Stack, Tabs, TabsList, TabsTab, Text, Textarea } from "@mantine/core";
 import { getHotkeyHandler, useDisclosure, useFocusTrap, useTimeout } from "@mantine/hooks";
-import { IconCirclePlus, IconHistory, IconMoodConfuzedFilled, IconMoodHappyFilled, IconMoodSad, IconMoodSadFilled, IconMoodSmileFilled, IconSend } from "@tabler/icons-react";
+import { IconCirclePlus, IconHistory, IconMoodConfuzedFilled, IconMoodHappyFilled, IconMoodSadFilled, IconMoodSmileFilled, IconSend } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -33,7 +33,7 @@ export default function Home() {
   const [firstStatement, setStatement] = useState<string>("I feel sad today, buddy.");
   const [indexResponse, setIndexResponse] = useState<number>(1);
   // console.log(indexResponse)
-  const { start, clear } = useTimeout((index) => {
+  const { start, clear } = useTimeout((index: number[]) => {
     close();
     setInteraction((prev) => ([
       ...prev,
@@ -118,7 +118,7 @@ export default function Home() {
           <Tabs.Panel value="insight"><InsightPanel /></Tabs.Panel>
           
           <Box className="bottom-content">
-            {numState == 5 && 
+            {activeTab === "curhat" && numState == 5 && 
               <Group align="flex-start" ref={focusTrapRef2}>
                 <Textarea
                   data-autofocus
