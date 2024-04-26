@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/store'
-import { Avatar, Container, Flex, List, Pill, Text } from '@mantine/core'
+import { Avatar, Container, Flex, List, Pill, Stack, Text } from '@mantine/core'
 import { IconBriefcaseFilled, IconSparkles } from '@tabler/icons-react'
 
 export default function InsightPanel() {
@@ -24,15 +24,18 @@ export default function InsightPanel() {
             <Avatar />
             <Text size="lg" fw={700}>{user?.name}</Text>
           </Flex>
-          <Container m={0} className="jobdesk-container">
-            <Flex gap={5} mb="xs" align="center">
+          <Stack className='jobdesk-container' mb={8}>
+            <Flex gap={5} align="center">
               <IconBriefcaseFilled />
               <Text fw="bold">{user?.position}</Text>
             </Flex>
             <Flex wrap="wrap" gap="sm">
               {CurrentUserTraits.map((Trait, index) => (<Pill key={index}>{Trait}</Pill>))}
             </Flex>
-          </Container>
+            <Flex wrap="wrap" gap="sm">
+              <a className="text-link" href="https://drive.google.com/file/d/1nnSEl5HJKikaQ3davfy0S6iLkju11Pwg/view?usp=drive_link" target="_blank">Personality Report</a>
+            </Flex>
+          </Stack>
         </Flex>
       </Container>
       <Container className="insight-section-user">

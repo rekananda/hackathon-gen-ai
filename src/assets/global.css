@@ -29,6 +29,14 @@ body {
   --input-fz: 16px;
 }
 
+.text-link {
+  color: var(--mantine-color-primary-6);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
 .history-button {
   position: absolute;
   top: 40px;
