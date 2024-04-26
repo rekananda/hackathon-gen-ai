@@ -104,7 +104,7 @@ export default function Home() {
             <ChatDialogue 
               datas={numState < 4 ? dummyChat[numState-1]:convertToChatGroup(interactionChat)} 
               aiLoading={fakeAiLoding}
-              {...(numState>4 ? {h: "calc(100vh - 250px)"}:{})}
+              {...(numState>4 ? {h: "calc(100dvh - 250px)"}:{})}
             />
             {numState === 4 && <Flex className="dialogue-message mt-2">
               <Box className="!p-0 !border-0 chat-box my-message" ref={focusTrapRef}>

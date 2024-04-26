@@ -9,7 +9,7 @@ body {
 }
 
 .content-box {
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   max-width: 480px;
   background-color: var(--mantine-color-white);
@@ -45,7 +45,7 @@ body {
 .history-bar {
   top: 0 !important;
   box-shadow: none !important;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--mantine-color-gray-3);
   width: 400px;
 }
@@ -56,7 +56,7 @@ body {
   border: solid 1;
   border-radius: 4px;
   padding: 8px;
-  width: 90vw;
+  width: 90dvw;
   max-width: 400px;
 }
 
