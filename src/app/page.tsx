@@ -53,6 +53,8 @@ export default function Home() {
       name: "Work Buddy",
       message: <div>{`Hello ${user ? user.name : ""}, ${greetings()}!`}<br/>how was your workday?</div>
     }])
+    setStatement(templateIntake[0]);
+    setIndexResponse(0);
     closePopup();
   }
 
@@ -102,13 +104,14 @@ export default function Home() {
             <ChatDialogue 
               datas={numState < 4 ? dummyChat[numState-1]:convertToChatGroup(interactionChat)} 
               aiLoading={fakeAiLoding}
-              {...(numState>4 ? {h: "calc(100vh - 227px)"}:{})}
+              {...(numState>4 ? {h: "calc(100vh - 250px)"}:{})}
             />
             {numState === 4 && <Flex className="dialogue-message mt-2">
               <Box className="!p-0 !border-0 chat-box my-message" ref={focusTrapRef}>
-                <Textarea w="300px" 
+                <Textarea w="300px"
+                  className="text-chat"
                   data-autofocus
-                  autosize
+                  rows={2}
                   placeholder="type something you feel here"
                   value={firstStatement}
                   // onChange={(e) => setStatement(e.target.value)}
@@ -129,10 +132,8 @@ export default function Home() {
               <Group align="flex-start" ref={focusTrapRef2}>
                 <Textarea
                   data-autofocus
-                  autosize
+                  className="flex-grow text-chat"
                   rows={2}
-                  maxRows={3}
-                  className="flex-grow"
                   placeholder="Type here"
                   value={firstStatement}
                   // onChange={(e) => setStatement(e.target.value)}
