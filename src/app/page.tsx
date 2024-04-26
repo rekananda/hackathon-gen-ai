@@ -15,22 +15,22 @@ import { convertToChatGroup, greetings } from "@/utils";
 import { ActionIcon, Box, Button, Divider, Flex, Group, Popover, Stack, Tabs, TabsList, TabsTab, Text, Textarea } from "@mantine/core";
 import { getHotkeyHandler, useDisclosure, useFocusTrap, useTimeout } from "@mantine/hooks";
 import { IconCirclePlus, IconHistory, IconMoodConfuzedFilled, IconMoodHappyFilled, IconMoodSadFilled, IconMoodSmileFilled, IconSend } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Home() {
   const { user } = useAppSelector((state) => state.global);
   const dispatch = useDispatch();
-  const userLocal = typeof window !== 'undefined' && localStorage.getItem("UserInfo") ? JSON.parse(localStorage.getItem("UserInfo")||"{}") : undefined;
   const [fakeAiLoding, {open, close}] = useDisclosure(false);
+  const [popHistory, {toggle, close: closePopup}] = useDisclosure(false);
   const focusTrapRef = useFocusTrap();
   const focusTrapRef2 = useFocusTrap();
 
-  const [numState, setState] = useState<number>(userLocal ? 4:1);
+  const [numState, setState] = useState<number>(1);
   const [activeTab, setActiveTab] = useState<string | null>('curhat');
   const [dummyChat] = useState<ChatGrouppedT[][]>([dummyChatGroupInit, dummyChatGroupAssement, dummyChatGroupAgreement]);
   const [interactionChat, setInteraction] = useState<ChatDataT[]>([]);
-  const [firstStatement, setStatement] = useState<string>("I feel sad today, buddy.");
+  const [firstStatement, setStatement] = useState<string>(templateIntake[0]);
   const [indexResponse, setIndexResponse] = useState<number>(1);
   // console.log(indexResponse)
   const { start, clear } = useTimeout((index: number[]) => {
@@ -53,16 +53,22 @@ export default function Home() {
       name: "Work Buddy",
       message: <div>{`Hello ${user ? user.name : ""}, ${greetings()}!`}<br/>how was your workday?</div>
     }])
+    closePopup();
   }
 
   const handleSubmit = () => {
-    if (firstStatement !== "") {
+    if (firstStatement.length > 0) {
+      let convertNewLine: ReactNode = firstStatement;
+      if (firstStatement.indexOf('\n') > -1) {
+        const words = firstStatement.split('\n')
+        convertNewLine = <div dangerouslySetInnerHTML={{__html: words.map((w) => `${w}<br/>`).join("")}}></div>;
+      }
       clear();
       setState(5);
       setInteraction((prev) => [...prev, {
         isBot: false,
         name: user ? user.name : "",
-        message: firstStatement
+        message: convertNewLine
       }]);
       setStatement("");
       open();
@@ -76,6 +82,7 @@ export default function Home() {
       const userL = localStorage.getItem("UserInfo") ? JSON.parse(localStorage.getItem("UserInfo")||"{}") : undefined;
       userL && dispatch(setUserData({data: userL}));
     } else {
+      numState === 1 && setState(4);
       setInteraction([{
         isBot: true,
         name: "Work Buddy",
@@ -95,7 +102,7 @@ export default function Home() {
             <ChatDialogue 
               datas={numState < 4 ? dummyChat[numState-1]:convertToChatGroup(interactionChat)} 
               aiLoading={fakeAiLoding}
-              {...(numState>4 ? {h: "calc(100vh - 217px)"}:{})}
+              {...(numState>4 ? {h: "calc(100vh - 227px)"}:{})}
             />
             {numState === 4 && <Flex className="dialogue-message mt-2">
               <Box className="!p-0 !border-0 chat-box my-message" ref={focusTrapRef}>
@@ -157,7 +164,7 @@ export default function Home() {
             </TabsList>}
           </Box>
         </Tabs>
-        {activeTab === "curhat" && numState >= 4 && <Popover position="right" offset={{ mainAxis: -42, crossAxis: -60 }} shadow="md">
+        {activeTab === "curhat" && numState >= 4 && <Popover opened={popHistory} onChange={toggle} position="right" offset={{ mainAxis: -42, crossAxis: -60 }} shadow="md">
           <Popover.Target>
             <Button className="history-button" variant="default"><IconHistory/></Button>
           </Popover.Target>

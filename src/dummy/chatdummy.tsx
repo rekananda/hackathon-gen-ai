@@ -109,6 +109,6 @@ export const templateIntake = [
   "I was late for the morning meeting by 15 minutes, and my manager blamed me",
   "Yes, I was late, but he was upset because I wasn't well-prepared for the presentation.",
   "His name is Fred Salosa, but I also call him Freddy",
-  "He called me a rebel and a useless person. That made me really sad. I've never heard him speak like that to anyone, even when someone else was late. What can I do tomorrow to improve my relationship with him?",
+  "He called me a rebel and a useless person. That made me really sad. I've never heard him speak like that to anyone, even when someone else was late.\nWhat can I do tomorrow to improve my relationship with him?",
   "Yes, please set an alarm for 8:00 AM every workday.  Also, can you suggest the best way to apologize?"
 ]

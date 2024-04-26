@@ -51,6 +51,11 @@ body {
   max-width: 400px;
 }
 
+.color-icon {
+  height: 15px;
+  width: 15px;
+}
+
 .mantine-Tabs-tab:where([data-active]) .icon-tab {
   color: var(--tabs-color);
 }

@@ -14,7 +14,6 @@ const ChatDialogue = (props: PropsChatboxT) => {
   const viewport = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(viewport.current!.scrollHeight);
     viewport.current!.scrollTo({ top: viewport.current!.scrollHeight, behavior: 'smooth' });
   }, [datas])
 

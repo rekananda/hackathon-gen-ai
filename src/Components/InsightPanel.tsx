@@ -1,7 +1,6 @@
 import { useAppSelector } from '@/store'
-import { Text, Avatar, Container, Flex, Pill, List } from '@mantine/core'
-import { IconBriefcase, IconSparkles } from '@tabler/icons-react'
-import React from 'react'
+import { Avatar, Container, Flex, List, Pill, Text } from '@mantine/core'
+import { IconBriefcaseFilled, IconSparkles } from '@tabler/icons-react'
 
 export default function InsightPanel() {
   const { user } = useAppSelector((state) => state.global)
@@ -27,8 +26,8 @@ export default function InsightPanel() {
           </Flex>
           <Container m={0} className="jobdesk-container">
             <Flex gap={5} mb="xs" align="center">
-              <IconBriefcase />
-              <p>{user?.jobDesc}</p>
+              <IconBriefcaseFilled />
+              <Text fw="bold">{user?.position}</Text>
             </Flex>
             <Flex wrap="wrap" gap="sm">
               {CurrentUserTraits.map((Trait, index) => (<Pill key={index}>{Trait}</Pill>))}
