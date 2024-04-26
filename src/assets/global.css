@@ -1,0 +1,120 @@
+body {
+  background: var(--mantine-color-gray-5) !important
+}
+
+.workspace {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-box {
+  height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--mantine-color-white);
+  padding: 12px;
+  position: relative;
+}
+
+.bottom-content {
+  position: absolute;
+  padding: 12px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.history-button {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  border-radius: 0 20px 20px 0 !important;
+  padding: 0 8px !important;
+}
+
+.history-bar {
+  top: 0 !important;
+  box-shadow: none !important;
+  height: 100vh;
+  background-color: var(--mantine-color-gray-3);
+  width: 400px;
+}
+
+.history-box {
+  background-color: white;
+  border-color: var(--mantine-color-primary-6);
+  border: solid 1;
+  border-radius: 4px;
+  padding: 8px;
+  width: 90vw;
+  max-width: 400px;
+}
+
+.mantine-Tabs-tab:where([data-active]) .icon-tab {
+  color: var(--tabs-color);
+}
+
+.dialogue-message {
+  align-items: flex-start !important;
+}
+
+.chat-box {
+  border-radius: 4px;
+  padding: 8px;
+  width: fit-content;
+  max-width: 300px;
+  word-break: break-word;
+}
+
+.chat-box a {
+  color: var(--mantine-color-primary-6);
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.chat-box.bot-message {
+  background-color: var(--mantine-color-primary-2);
+}
+
+.dialogue-message:has(.my-message) {
+  justify-content: end;
+}
+
+.chat-box.my-message {
+  border: solid 1px var(--mantine-color-gray-5);
+}
+
+.insight-section-user {
+  background-color: var(--mantine-color-white)
+}
+
+.InsightPanel p {
+  margin: 0
+}
+
+.Colleague {
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 10px;
+  border: 2px solid var(--mantine-color-gray-5);
+}
+
+.Colleague:hover {
+  cursor: pointer;
+}
+
+.Colleague p {
+  margin: 0;
+}
+
+.jobdesk-container {
+  padding-left: 50px
+}
+
+.Sparkle {
+  background-color: var(--mantine-color-gray-1);
+  border-radius: 100%;
+  padding: 5px;
+  padding-inline: 10px;
+}
