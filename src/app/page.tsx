@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 export default function Home() {
   const { user } = useAppSelector((state) => state.global);
   const dispatch = useDispatch();
-  const userLocal = localStorage.getItem("UserInfo") ? JSON.parse(localStorage.getItem("UserInfo")||"{}") : undefined;
+  const userLocal = typeof window !== 'undefined' && localStorage.getItem("UserInfo") ? JSON.parse(localStorage.getItem("UserInfo")||"{}") : undefined;
   const [fakeAiLoding, {open, close}] = useDisclosure(false);
   const focusTrapRef = useFocusTrap();
   const focusTrapRef2 = useFocusTrap();

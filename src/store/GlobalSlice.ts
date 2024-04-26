@@ -46,7 +46,7 @@ const globalSlice: any = createSlice({
   initialState,
   reducers: {
     setUserData: (state: State, action: PayloadAction<PayloadDataT<UserDataT>>) => {
-      if (action.payload.saveToLocalStorage) {
+      if (action.payload.saveToLocalStorage && typeof window !== 'undefined') {
         localStorage.setItem("UserInfo", JSON.stringify(action.payload.data));
       }
       state.user = action.payload.data;
